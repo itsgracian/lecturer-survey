@@ -1,3 +1,11 @@
+<?php 
+include 'src/Config/Database.php';
+
+$sql = "SELECT * FROM lecturer ORDER BY createdAt DESC";
+
+$result = $con->query($sql);
+
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -20,19 +28,29 @@
             <a href="/add-lecturer"><button type="button">Add lecturer</button></a>
             </div>
             <div class="course">
+            <?php if ($result->num_rows > 0): ?>
                 <ul>
+                <?php while ($row = $result->fetch_assoc()): ?>
                     <li>
                         <div class="name flex-column d-flex justify-content-start lecturerInfo">
-                            <span>Mutabazi Innocent</span>
-                            <small>Business Management</small>
+                            <span><?php echo $row['name']; ?></span>
                         </div>
                         <div class="action d-flex justify-content-center align-items-center">
+                           <a href="/edit-lecturer?id=<?php echo $row['id']; ?>">
                            <button type="button">
                                <span class="ion-edit"></span>
                            </button>
+                           </a>
                         </div>
                     </li>
+                    <?php endwhile; ?>
                 </ul>
+                <?php endif; ?>
+                <?php if ($result->num_rows <= 0): ?>
+                    <div class="alert alert-secondary" role="alert">
+                     No result found
+                  </div>
+               <?php endif; ?>
             </div>
         </div>
         </div>

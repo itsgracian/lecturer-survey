@@ -35,8 +35,14 @@ switch ($request) {
         require __DIR__ . '/src/Admin/Course/AddCourse.php';
         break;
 
-    case '/edit-course':
+    case parse_url($request, PHP_URL_PATH) === '/edit-course' &&
+        parse_url($request, PHP_URL_QUERY):
         require __DIR__ . '/src/Admin/Course/EditCourse.php';
+        break;
+
+    case parse_url($request, PHP_URL_PATH) === '/edit-lecturer' &&
+        parse_url($request, PHP_URL_QUERY):
+        require __DIR__ . '/src/Admin/Lecturer/EditLecturer.php';
         break;
 
     default:

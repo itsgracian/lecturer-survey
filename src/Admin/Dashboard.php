@@ -1,10 +1,9 @@
 <?php
 include 'src/Config/Database.php';
 
-$sql = "SELECT * FROM courses ORDER BY createdAt DESC";
+$sql = 'SELECT * FROM courses ORDER BY createdAt DESC';
 
 $result = $con->query($sql);
-
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -36,12 +35,16 @@ $result = $con->query($sql);
                             <span><?php echo $row['name']; ?></span>
                         </div>
                         <div class="action d-flex justify-content-center align-items-center">
+                           <a href="#">
                            <button type="button" style="color: red;">
                                <span class="ion-ios-trash-outline"></span>
                            </button>
+                           </a>
+                           <a href='/edit-course?id=<?php echo $row['id']; ?>'>
                            <button type="button">
                                <span class="ion-edit"></span>
                            </button>
+                           </a>
                         </div>
                     </li>
                     <?php endwhile; ?>

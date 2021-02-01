@@ -5,13 +5,31 @@ include 'src/Config/Database.php';
 
 $request = $_SERVER['REQUEST_URI'];
 
+$name = '';
+
+if (isset($_GET['id']) && !empty($_GET['id'])) {
+    //do
+    $id = $_GET['id'];
+    $sql = "SELECT * FROM lecturer WHERE id='$id'";
+
+    if ($con->query($sql)) {
+        $result = $con->query($sql);
+        while ($row = $result->fetch_assoc()) {
+            $name = $row['name'];
+        }
+    }
+} else {
+    $_SESSION['serverError'] = 'Error: Something went wrong try again';
+    header('Location: /admin');
+}
+
 if (isset($_POST['submit'])) {
     $name = $_POST['name'];
 
     $photo = $_FILES['photo'];
 
     if (empty($name) || empty($photo)) {
-        $_SESSION['lError'] = 'Validation Error: All field are required';
+        $_SESSION['lUError'] = 'Validation Error: All field are required';
 
         header("Location: $request");
     } else {
@@ -25,18 +43,17 @@ if (isset($_POST['submit'])) {
 
             $sql = "INSERT INTO lecturer(name, photo) VALUES ('$name', '$fileName')";
 
-            if($con->query($sql)){
-                unset($_SESSION['lError']);
+            if ($con->query($sql)) {
+                unset($_SESSION['lUError']);
 
-                $_SESSION['lSuccess'] = 'Lecturer added successfully';
+                $_SESSION['lUSuccess'] = 'Lecturer added successfully';
 
                 header("Location: $request");
             }
-
         } else {
-            $_SESSION['lError'] = 'Upload Error: Failed to upload image';
+            $_SESSION['lUError'] = 'Upload Error: Failed to upload image';
 
-            unset($_SESSION['lSuccess']);
+            unset($_SESSION['lUSuccess']);
 
             header("Location: $request");
         }
@@ -54,7 +71,7 @@ if (isset($_POST['submit'])) {
         integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
     <link rel="stylesheet" href="src/Asset/css/Style.css">
     <link rel="stylesheet" href="http://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
-    <title>Add Lecturer</title>
+    <title>Edit Lecturer</title>
 </head>
 
 <body>
@@ -64,33 +81,33 @@ if (isset($_POST['submit'])) {
             <div class="adminDashboard">
                 <?php require 'src/Reusable/AdminTab.php'; ?>
                 <div class="addItem">
-                    <form method="POST" action="<?php $_SERVER['PHP_SELF']; ?>" enctype="multipart/form-data">
-                    <?php if (isset($_SESSION['lError'])): ?>
+                    <form method="POST" action="<?php $_SERVER[
+                        'PHP_SELF'
+                    ]; ?>" enctype="multipart/form-data">
+                    <?php if (isset($_SESSION['lUError'])): ?>
                         <div class="alert alert-danger" role="alert">
-                        <?php echo $_SESSION['lError']; ?>
+                        <?php echo $_SESSION['lUError']; ?>
                     </div>
                     <?php endif; ?>
-                    <?php if (isset($_SESSION['lSuccess'])): ?>
+                    <?php if (isset($_SESSION['lUSuccess'])): ?>
                         <div class="alert alert-success" role="alert">
-                        <?php echo $_SESSION['lSuccess']; ?>
+                        <?php echo $_SESSION['lUSuccess']; ?>
                     </div>
                     <?php endif; ?>
                         <div class="mb-3">
                             <label for="exampleInputEmail1" class="form-label">Name</label>
-                            <input type="text" class="form-control" name="name" required placeholder="lecturer names">
+                            <input type="text" class="form-control" name="name" required placeholder="lecturer names" value="<?php echo $name; ?>">
                         </div>
                         <div class="mb-3">
                             <label for="exampleInputPassword1" class="form-label">Image</label>
                             <input type="file" class="form-control" name="photo" required>
                         </div>
-                        <button type="submit" class="btn btn-primary" name="submit">Submit</button>
+                        <button type="submit" class="btn btn-primary" name="submit">Update</button>
                     </form>
                 </div>
             </div>
         </div>
     </div>
-
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 </body>
 
 </html>
