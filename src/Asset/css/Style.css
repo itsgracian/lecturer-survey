@@ -1,0 +1,65 @@
+@import './Student.css';
+@import './Login.css';
+@import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;500;700&display=swap');
+
+:root {
+  --red: #ff002e;
+}
+
+body {
+  background-color: #f8f8f8;
+  font-family: 'Quicksand', sans-serif;
+}
+
+.header {
+  position: relative;
+  padding: 20px 0px 20px 0px;
+  border-bottom: 1px solid #e7e7e7;
+}
+.header .userDetail {
+  position: relative;
+}
+
+.userDetail .logo {
+  width: 100px;
+  height: 100px;
+  border-radius: 100px;
+  background-color: #5199e4;
+}
+.userDetail .logo span {
+  color: white;
+  font-size: 50px;
+}
+
+.userDetail .detail {
+  margin-left: 15px;
+}
+
+.userDetail .detail span:first-child {
+  font-size: 20px;
+  font-weight: bold;
+}
+
+.userDetail .detail span:last-child {
+  font-size: 15px;
+}
+
+.header .logout {
+  position: relative;
+}
+
+.header .logout button {
+  background-color: var(--red);
+  color: white;
+  border: none;
+  outline: none;
+  width: 161px;
+  height: 50px;
+  border-radius: 5px;
+}
+
+/* utilities */
+.appContainer {
+  width: 1000px;
+  margin: auto;
+}

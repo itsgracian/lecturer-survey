@@ -1,0 +1,31 @@
+
+
+.login {
+  width: 100%;
+  height: 100vh;
+}
+.login .authForm {
+  width: 350px;
+  margin: auto;
+}
+
+.authForm input {
+  height: 65px;
+  background-color: white;
+  border: 1px solid #e5e5e5;
+  border-radius: 10px;
+  margin-top: 19px;
+}
+
+.authForm button {
+  height: 65px;
+  color: white;
+  font-weight: bold;
+  text-transform: capitalize;
+  border-radius: 10px;
+  margin-top: 19px;
+  width: 100%;
+  background-color: black;
+  outline: none;
+  border: none;
+}
