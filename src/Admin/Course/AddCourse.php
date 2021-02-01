@@ -1,7 +1,39 @@
 <?php
+session_start();
+
+include 'src/Config/Database.php';
+
 if (isset($_POST['submit'])) {
     $name = $_POST['name'];
-} 
+    if (empty($name)) {
+        $errorMessage = 'Validation Error: course name is required';
+
+        $_SESSION['error'] = $errorMessage;
+
+        unset($_SESSION['success']);
+
+        header('Location: /add-course');
+    } else {
+        $sql = "INSERT INTO courses (name) VALUES ('$name')";
+
+        if ($con->query($sql) === true) {
+            $successMessage = 'Course added successfully';
+            $_SESSION['success'] = 'Course added successfully';
+
+            unset($_SESSION['error']);
+
+            header('Location: /add-course');
+        } else {
+            $errorMessage = 'Error: Failed to add course';
+
+            $_SESSION['error'] = $errorMessage;
+
+            unset($_SESSION['success']);
+
+            header('Location: /add-course');
+        }
+    }
+}
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -24,11 +56,21 @@ if (isset($_POST['submit'])) {
             <div class="adminDashboard">
                 <?php require 'src/Reusable/AdminTab.php'; ?>
                 <div class="addItem">
+                    <?php if (isset($_SESSION['error'])): ?>
+                        <div class="alert alert-danger" role="alert">
+                        <?php echo $_SESSION['error']; ?>
+                    </div>
+                    <?php endif; ?>
+                    <?php if (isset($_SESSION['success'])): ?>
+                        <div class="alert alert-success" role="alert">
+                        <?php echo $_SESSION['success']; ?>
+                    </div>
+                    <?php endif; ?>
                     <form action="/add-course" method="POST">
                         <div class="mb-3">
                             <label for="exampleInputEmail1" class="form-label">Name</label>
-                            <input type="text" class="form-control" id="exampleInputEmail1"
-                                aria-describedby="emailHelp" required placeholder="name of course" name="name">
+                            <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"
+                                placeholder="name of course" name="name">
                         </div>
                         <button type="submit" class="btn btn-primary" name="submit">Submit</button>
                     </form>

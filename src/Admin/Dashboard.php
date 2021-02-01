@@ -1,3 +1,11 @@
+<?php
+include 'src/Config/Database.php';
+
+$sql = "SELECT * FROM courses ORDER BY createdAt DESC";
+
+$result = $con->query($sql);
+
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -20,10 +28,12 @@
             <a href="/add-course"><button type="button">Add course</button></a>
             </div>
             <div class="course">
+                <?php if ($result->num_rows > 0): ?>
                 <ul>
+                    <?php while ($row = $result->fetch_assoc()): ?>
                     <li>
                         <div class="name">
-                            <span>Introduction to Javascript</span>
+                            <span><?php echo $row['name']; ?></span>
                         </div>
                         <div class="action d-flex justify-content-center align-items-center">
                            <button type="button" style="color: red;">
@@ -34,7 +44,14 @@
                            </button>
                         </div>
                     </li>
+                    <?php endwhile; ?>
                 </ul>
+                <?php endif; ?>
+                <?php if ($result->num_rows <= 0): ?>
+                    <div class="alert alert-secondary" role="alert">
+                     No result found
+                  </div>
+               <?php endif; ?>
             </div>
         </div>
         </div>
