@@ -1,0 +1,120 @@
+:root {
+  --red: #ff002e;
+}
+.admin {
+  position: relative;
+}
+
+.admin .adminDashboard {
+  position: relative;
+  width: 100%;
+  padding-top: 57px;
+}
+
+.adminDashboard .adminTab {
+  position: relative;
+}
+.adminTab ul {
+  display: flex;
+  list-style-type: none;
+  width: 100%;
+}
+.adminTab a {
+  text-decoration: none;
+  color: black;
+  font-weight: bold;
+  display: flex;
+  align-items: center;
+}
+
+.adminTab a span:first-child {
+  font-size: 30px;
+}
+.adminTab a span:last-child {
+  font-size: 18px;
+  margin-left: 5px;
+}
+
+.adminTab ul li {
+  padding-left: 20px;
+  padding-right: 20px;
+}
+
+.adminTab ul li:first-child {
+  margin-left: 0px;
+  padding-left: 0px;
+}
+
+.adminDashboard .course {
+  padding-top: 20px;
+  position: relative;
+}
+
+.adminDashboard .course ul {
+  list-style-type: none;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  width: 735px;
+}
+
+.adminDashboard .course ul li {
+  width: 100%;
+  position: relative;
+  background: #ededed;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  padding: 20px;
+  margin-top: 30px;
+}
+
+.adminDashboard .course ul li:first-child {
+  margin-top: 0px;
+}
+
+.adminDashboard .course ul li .name {
+  flex-grow: 1;
+  display: flex;
+  font-weight: bold;
+}
+
+.adminDashboard .course ul li .lecturerInfo {
+  flex-grow: 1;
+  display: flex;
+  font-weight: normal !important;
+}
+.lecturerInfo span {
+  font-weight: bold;
+}
+.adminDashboard .course ul li .action {
+  position: relative;
+  border-left: 5px solid #c4c4c4;
+  width: 127px;
+}
+
+.adminDashboard .course ul li .action button {
+  border: none;
+  outline: none;
+  box-shadow: none;
+  background: none;
+  font-size: 30px;
+}
+
+.adminDashboard .addLecturer{
+    position: relative;
+}
+.addLecturer button{
+    border: none;
+    padding: 10px;
+    border-radius: 5px;
+    border: 1px solid #ddd;
+    font-size: 13px;
+    font-weight: bold;
+    outline: none;
+}
+
+.adminDashboard .addItem{
+    position: relative;
+    width: 735px;
+}
