@@ -75,28 +75,31 @@ if (isset($_POST['submit'])) {
             <div class="adminDashboard">
                 <?php require 'src/Reusable/AdminTab.php'; ?>
                 <div class="addItem">
-                <?php if (isset($_SESSION['stError'])): ?>
-                        <div class="alert alert-danger" role="alert">
+                    <?php if (isset($_SESSION['stError'])): ?>
+                    <div class="alert alert-danger" role="alert">
                         <?php echo $_SESSION['stError']; ?>
                     </div>
                     <?php endif; ?>
                     <?php if (isset($_SESSION['stSuccess'])): ?>
-                        <div class="alert alert-success" role="alert">
+                    <div class="alert alert-success" role="alert">
                         <?php echo $_SESSION['stSuccess']; ?>
                     </div>
                     <?php endif; ?>
                     <form action="/add-student" method="POST">
                         <div class="mb-3">
                             <label for="exampleInputEmail1" class="form-label">Name</label>
-                            <input type="text" class="form-control" id="exampleInputEmail1" placeholder="student name" name="name" required>
+                            <input type="text" class="form-control" id="exampleInputEmail1" placeholder="student name"
+                                name="name" required>
                         </div>
                         <div class="mb-3">
                             <label for="exampleInputPassword1" class="form-label">Reg Number</label>
-                            <input type="text" class="form-control" id="exampleInputEmail1" placeholder="registration number" name="regNumber" required>
+                            <input type="text" class="form-control" id="exampleInputEmail1"
+                                placeholder="registration number" name="regNumber" required>
                         </div>
                         <div class="mb-3">
                             <label for="exampleInputPassword1" class="form-label">Password</label>
-                            <input type="password" class="form-control" id="exampleInputEmail1" placeholder="password" name="password" required>
+                            <input type="password" class="form-control" id="exampleInputEmail1" placeholder="password"
+                                name="password" required>
                         </div>
                         <button type="submit" class="btn btn-primary" name="submit">Submit</button>
                     </form>

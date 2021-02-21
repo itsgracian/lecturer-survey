@@ -86,19 +86,20 @@ if (isset($_POST['submit'])) {
                     <form method="POST" action="<?php $_SERVER[
                         'PHP_SELF'
                     ]; ?>" enctype="multipart/form-data">
-                    <?php if (isset($_SESSION['lUError'])): ?>
+                        <?php if (isset($_SESSION['lUError'])): ?>
                         <div class="alert alert-danger" role="alert">
-                        <?php echo $_SESSION['lUError']; ?>
-                    </div>
-                    <?php endif; ?>
-                    <?php if (isset($_SESSION['lUSuccess'])): ?>
+                            <?php echo $_SESSION['lUError']; ?>
+                        </div>
+                        <?php endif; ?>
+                        <?php if (isset($_SESSION['lUSuccess'])): ?>
                         <div class="alert alert-success" role="alert">
-                        <?php echo $_SESSION['lUSuccess']; ?>
-                    </div>
-                    <?php endif; ?>
+                            <?php echo $_SESSION['lUSuccess']; ?>
+                        </div>
+                        <?php endif; ?>
                         <div class="mb-3">
                             <label for="exampleInputEmail1" class="form-label">Name</label>
-                            <input type="text" class="form-control" name="name" required placeholder="lecturer names" value="<?php echo $name; ?>">
+                            <input type="text" class="form-control" name="name" required placeholder="lecturer names"
+                                value="<?php echo $name; ?>">
                         </div>
                         <div class="mb-3">
                             <label for="exampleInputPassword1" class="form-label">Image</label>
