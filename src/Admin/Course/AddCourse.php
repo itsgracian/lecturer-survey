@@ -14,7 +14,7 @@ if (isset($_POST['submit'])) {
 
         header('Location: /add-course');
     } else {
-        $sql = "INSERT INTO courses (name) VALUES ('$name')";
+        $sql = "INSERT INTO course (name) VALUES ('$name')";
 
         if ($con->query($sql) === true) {
             $successMessage = 'Course added successfully';

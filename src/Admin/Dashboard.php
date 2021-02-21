@@ -1,7 +1,7 @@
 <?php
 include 'src/Config/Database.php';
 
-$sql = 'SELECT * FROM courses ORDER BY createdAt DESC';
+$sql = 'SELECT * FROM course ORDER BY createdAt DESC';
 
 $result = $con->query($sql);
 ?>

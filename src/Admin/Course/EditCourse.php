@@ -14,7 +14,7 @@ if (isset($_GET['id'])) {
     } else {
         //do
         $courseId = $_GET['id'];
-        $sql = "SELECT * FROM courses WHERE id='$courseId'";
+        $sql = "SELECT * FROM course WHERE id='$courseId'";
 
         if ($con->query($sql)) {
             $result = $con->query($sql);

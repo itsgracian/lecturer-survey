@@ -28,6 +28,8 @@ if (isset($_POST['submit'])) {
 
     $photo = $_FILES['photo'];
 
+    $id = $_GET['id'];
+
     if (empty($name) || empty($photo)) {
         $_SESSION['lUError'] = 'Validation Error: All field are required';
 
@@ -41,12 +43,12 @@ if (isset($_POST['submit'])) {
         if (move_uploaded_file($photo['tmp_name'], $uploadFile)) {
             $fileName = $photo['name'];
 
-            $sql = "INSERT INTO lecturer(name, photo) VALUES ('$name', '$fileName')";
+            $sql = "UPDATE lecturer SET name='$name', photo='$fileName' WHERE id='$id'";
 
             if ($con->query($sql)) {
                 unset($_SESSION['lUError']);
 
-                $_SESSION['lUSuccess'] = 'Lecturer added successfully';
+                $_SESSION['lUSuccess'] = 'Lecturer updated successfully';
 
                 header("Location: $request");
             }

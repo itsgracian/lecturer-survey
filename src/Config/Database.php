@@ -1,5 +1,5 @@
 <?php
-$con = mysqli_connect("sql7.freemysqlhosting.net","sql7390133","ydHAHuGpGQ","sql7390133");
+$con = mysqli_connect("localhost","root","gramdb@1","survey");
 
 // Check connection
 if (mysqli_connect_errno()) {
