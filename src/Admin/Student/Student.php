@@ -1,3 +1,22 @@
+<?php
+session_start();
+
+include 'src/Config/Database.php';
+
+$URI = $_SERVER['REQUEST_URI'];
+
+$success = 'stSuccess';
+
+$error = 'stViewError';
+
+$sql = "SELECT * FROM user WHERE userType='$role[0]' ORDER BY id DESC";
+
+$result = $con->query($sql);
+
+if (!$result) {
+    $_SESSION[$error] = 'An error occurred try again';
+}
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -19,15 +38,29 @@
             <div class="addLecturer">
             <a href="/add-student"><button type="button">Add student</button></a>
             </div>
+            <?php if (isset($_SESSION[$error])): ?>
+                        <div class="alert alert-danger" role="alert">
+                        <?php echo $_SESSION[$error]; ?>
+                    </div>
+                    <?php endif; ?>
             <div class="course">
+            <?php if ($result->num_rows > 0): ?>
                 <ul>
+                <?php while ($row = $result->fetch_assoc()): ?>
                     <li>
                         <div class="name flex-column d-flex justify-content-start lecturerInfo">
-                            <span>Mutabazi Innocent</span>
-                            <small>R05 1450 D</small>
+                            <span><?php echo $row['name']; ?></span>
+                            <small><?php echo $row['regNumber']; ?></small>
                         </div>
                     </li>
+                    <?php endwhile; ?>
                 </ul>
+                <?php endif; ?>
+                <?php if ($result->num_rows <= 0): ?>
+                    <div class="alert alert-secondary" role="alert">
+                     No result found
+                  </div>
+               <?php endif; ?>
             </div>
         </div>
         </div>
