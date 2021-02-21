@@ -34,7 +34,7 @@ if (isset($_POST['submit'])) {
 
         $studentRegNumber = strtoupper(str_replace(" ", "", $regNumber));
 
-        $sql = "INSERT INTO user(name, regNumber, password) VALUES ('$name', ' $studentRegNumber', '$encryptPassword')";
+        $sql = "INSERT INTO user(name, reg_number, password) VALUES ('$name', ' $studentRegNumber', '$encryptPassword')";
 
         if ($con->query($sql)) {
             $_SESSION[$success] = 'Student saved successfully';

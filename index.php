@@ -45,6 +45,10 @@ switch ($request) {
         require __DIR__ . '/src/Admin/Lecturer/EditLecturer.php';
         break;
 
+    case '/logout':
+        require __DIR__ . '/src/Auth/Logout.php';
+        break;
+
     default:
         http_response_code(404);
         require __DIR__ . '/src/404.php';
