@@ -55,7 +55,7 @@ if (!$result) {
                                     <?php echo $row['name']; ?>
                                 </span>
                                 <small>
-                                    <?php echo $row['reg_number']; ?>
+                                    <?php echo $row['regNumber']; ?>
                                 </small>
                             </div>
                         </li>
