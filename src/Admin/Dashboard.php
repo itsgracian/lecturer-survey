@@ -1,4 +1,6 @@
 <?php
+session_start();
+
 include 'src/Config/Database.php';
 
 $sql = 'SELECT * FROM course ORDER BY createdAt DESC';

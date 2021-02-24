@@ -9,7 +9,7 @@ $success = 'stSuccess';
 
 $error = 'stViewError';
 
-$sql = "SELECT * FROM user WHERE userType='$role[0]' ORDER BY id DESC";
+$sql = "SELECT * FROM users WHERE userType='$role[0]' ORDER BY id DESC";
 
 $result = $con->query($sql);
 

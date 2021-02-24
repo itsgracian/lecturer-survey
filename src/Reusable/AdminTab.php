@@ -1,3 +1,5 @@
+<?php
+include 'src/Auth/IsAdmin.php'; ?>
 <div class="adminTab">
     <ul>
         <li>
