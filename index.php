@@ -49,6 +49,11 @@ switch ($request) {
         require __DIR__ . '/src/Auth/Logout.php';
         break;
 
+    case parse_url($request, PHP_URL_PATH) === '/vote' &&
+    parse_url($request, PHP_URL_QUERY):
+    require __DIR__ . '/src/Student/Vote.php';
+    break;
+
     default:
         http_response_code(404);
         require __DIR__ . '/src/404.php';

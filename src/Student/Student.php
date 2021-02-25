@@ -36,6 +36,7 @@ $result = $con->query($sql);
                 <?php if ($result->num_rows > 0): ?>
                 <div class="candidate">
                 <?php while ($row = $result->fetch_assoc()): ?>
+                    <a href="<?php echo '/vote?lecturer=' . $row['id']; ?>">
                     <div class="item d-flex">
                         <div class="image">
                             <img src="<?php echo 'src/Upload/' .
@@ -49,6 +50,7 @@ $result = $con->query($sql);
                          
                         </div>
                     </div>
+                    </a>
                     <?php endwhile; ?>
                 </div>
                 <?php endif; ?>
