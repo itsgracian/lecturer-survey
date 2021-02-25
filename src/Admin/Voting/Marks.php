@@ -71,10 +71,10 @@ $lecturerResult = $con->query($lectSql);
                                 </small>
                             </div>
                             <div class="action d-flex justify-content-center align-items-center">
-                            <span style="font-size: 20px; font-weight: bold">
+                            <!-- <span style="font-size: 20px; font-weight: bold">
                                         <?php echo $row['totalMarks'] / 100 .
                                             '%'; ?>
-                                    </span>
+                                    </span> -->
                             </div>
                         </li>
                         <?php endwhile; ?>

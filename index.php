@@ -2,8 +2,10 @@
 $request = $_SERVER['REQUEST_URI'];
 
 switch ($request) {
-    case '/':
-    case '':
+    case parse_url($request, PHP_URL_PATH) === '/':
+        require __DIR__ . '/src/Home/Home.php';
+        break;
+
     case '/login':
         require __DIR__ . '/src/Auth/Login.php';
         break;

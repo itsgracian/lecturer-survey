@@ -82,7 +82,7 @@ if (isset($_POST['submit'])) {
                         </div>
                         <div class="mb-3">
                             <label for="exampleInputPassword1" class="form-label">Image</label>
-                            <input type="file" class="form-control" name="photo" required>
+                            <input type="file" class="form-control" name="photo" required accept="image/*">
                         </div>
                         <button type="submit" class="btn btn-primary" name="submit">Submit</button>
                     </form>

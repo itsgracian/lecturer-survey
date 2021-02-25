@@ -72,7 +72,7 @@ $lecturerResult = $con->query($lectSql);
                                     'lecturerId'
                                 ]; ?>&course=<?php echo $row['courseId']; ?>">
                                     <button type="button" style="border: 1px solid #ddd; font-size: 15px; padding: 5px; font-weight: bold; background: black; color: white; border-radius: 30px;">
-                                        <small>percentages</small>
+                                        <small>marks</small>
                                     </button>
                                 </a>
                             </div>

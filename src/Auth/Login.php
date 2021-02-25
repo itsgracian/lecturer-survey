@@ -11,8 +11,6 @@ $success = 'loginSuccess';
 
 $error = 'loginError';
 
-
-
 if (isset($_POST['submit'])) {
     $regNumber = $_POST['regNumber'];
 
@@ -79,7 +77,7 @@ if (isset($_POST['submit'])) {
 
 <body>
     <div class="login d-flex justify-content-center align-items-center">
-        <form action="/" method="POST">
+        <form action="/login" method="POST">
         <?php if (isset($_SESSION[$error])): ?>
                 <div class="alert alert-danger" role="alert">
                     <?php echo $_SESSION[$error]; ?>
