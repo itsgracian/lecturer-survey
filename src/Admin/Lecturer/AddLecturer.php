@@ -52,6 +52,7 @@ if (isset($_POST['submit'])) {
     <!-- CSS only -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
+    <link rel="stylesheet" href="src/Asset/bootstrap/css/bootstrap.min.css">
     <link rel="stylesheet" href="src/Asset/css/Style.css">
     <link rel="stylesheet" href="http://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
     <title>Add Lecturer</title>
@@ -65,16 +66,16 @@ if (isset($_POST['submit'])) {
                 <?php require 'src/Reusable/AdminTab.php'; ?>
                 <div class="addItem">
                     <form method="POST" action="<?php $_SERVER['PHP_SELF']; ?>" enctype="multipart/form-data">
-                    <?php if (isset($_SESSION['lError'])): ?>
+                        <?php if (isset($_SESSION['lError'])): ?>
                         <div class="alert alert-danger" role="alert">
-                        <?php echo $_SESSION['lError']; ?>
-                    </div>
-                    <?php endif; ?>
-                    <?php if (isset($_SESSION['lSuccess'])): ?>
+                            <?php echo $_SESSION['lError']; ?>
+                        </div>
+                        <?php endif; ?>
+                        <?php if (isset($_SESSION['lSuccess'])): ?>
                         <div class="alert alert-success" role="alert">
-                        <?php echo $_SESSION['lSuccess']; ?>
-                    </div>
-                    <?php endif; ?>
+                            <?php echo $_SESSION['lSuccess']; ?>
+                        </div>
+                        <?php endif; ?>
                         <div class="mb-3">
                             <label for="exampleInputEmail1" class="form-label">Name</label>
                             <input type="text" class="form-control" name="name" required placeholder="lecturer names">

@@ -44,7 +44,9 @@ if (isset($_POST['submit'])) {
     <!-- CSS only -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
+    <link rel="stylesheet" href="src/Asset/bootstrap/css/bootstrap.min.css">
     <link rel="stylesheet" href="src/Asset/css/Style.css">
+
     <link rel="stylesheet" href="http://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
     <title>Add Course</title>
 </head>
@@ -57,12 +59,12 @@ if (isset($_POST['submit'])) {
                 <?php require 'src/Reusable/AdminTab.php'; ?>
                 <div class="addItem">
                     <?php if (isset($_SESSION['error'])): ?>
-                        <div class="alert alert-danger" role="alert">
+                    <div class="alert alert-danger" role="alert">
                         <?php echo $_SESSION['error']; ?>
                     </div>
                     <?php endif; ?>
                     <?php if (isset($_SESSION['success'])): ?>
-                        <div class="alert alert-success" role="alert">
+                    <div class="alert alert-success" role="alert">
                         <?php echo $_SESSION['success']; ?>
                     </div>
                     <?php endif; ?>

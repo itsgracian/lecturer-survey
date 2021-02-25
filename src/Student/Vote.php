@@ -70,6 +70,7 @@ if (isset($_POST['submit']) && isset($lecturerId)) {
         integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"
         integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+    <link rel="stylesheet" href="src/Asset/bootstrap/css/bootstrap.min.css">
     <link rel="stylesheet" href="src/Asset/css/Style.css">
     <title>Start Voting</title>
 </head>
