@@ -63,6 +63,11 @@ switch ($request) {
         require __DIR__ . '/src/Admin/Voting/Course.php';
         break;
 
+    case parse_url($request, PHP_URL_PATH) === '/total-marks-per-course' &&
+        parse_url($request, PHP_URL_QUERY):
+        require __DIR__ . '/src/Admin/Voting/Marks.php';
+        break;
+
     default:
         http_response_code(404);
         require __DIR__ . '/src/404.php';

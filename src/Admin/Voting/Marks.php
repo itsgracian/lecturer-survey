@@ -4,16 +4,15 @@ session_start();
 include 'src/Config/Database.php';
 
 $lecturerId = $_GET['lecturer'];
-if (!isset($lecturerId)) {
+
+$courseId = $_GET['course'];
+
+if (!isset($lecturerId) && !isset($courseId)) {
     header('Location:/admin-voting');
 }
 
-$sql = "SELECT lecturer.name AS lecturerName, lecturer.id as lecturerId, 
-    course.name AS courseName, COUNT(vote.userId) as numberOfUser, 
-    course.id as courseId, lecturer.photo as lecturerPhoto FROM vote, 
-    lecturer, course WHERE vote.lecturerId=lecturer.id AND lecturer.id='$lecturerId' 
-    AND course.id = vote.courseId GROUP BY vote.lecturerId, 
-    course.name, course.id ORDER BY numberOfUser DESC";
+$sql = "SELECT course.name as courseName, vote.lecturerId as lecturerId, SUM(vote.marks) as totalMarks FROM vote, course 
+WHERE vote.courseId = '$courseId' AND vote.courseId =course.id AND vote.lecturerId='$lecturerId' GROUP BY vote.lecturerId";
 
 $result = $con->query($sql);
 
@@ -32,7 +31,7 @@ $lecturerResult = $con->query($lectSql);
         integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
     <link rel="stylesheet" href="src/Asset/css/Style.css">
     <link rel="stylesheet" href="http://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
-    <title>Voting</title>
+    <title>Total Marks of lecturer per course</title>
 </head>
 
 <body>
@@ -43,18 +42,20 @@ $lecturerResult = $con->query($lectSql);
                 <?php require 'src/Reusable/AdminTab.php'; ?>
                 <div class="course">
                     <?php if ($lecturerResult->num_rows > 0): ?>
-                        <?php while ($r = $lecturerResult->fetch_assoc()): ?>
-                        <div class="userInformation d-flex align-items-center" style="margin-left: 30px">
-                          <div class="avatar">
-                              <img src="<?php echo '/src/Upload/' .
-                                  $r['photo']; ?>" alt="">
-                          </div>
-                          <div class="detail">
-                              <span><?php echo $r['name']; ?></span>
-                          </div>
+                    <?php while ($r = $lecturerResult->fetch_assoc()): ?>
+                    <div class="userInformation d-flex align-items-center" style="margin-left: 30px">
+                        <div class="avatar">
+                            <img src="<?php echo '/src/Upload/' .
+                                $r['photo']; ?>" alt="">
                         </div>
-                        <?php endwhile; ?>
-                        <?php endif; ?>
+                        <div class="detail">
+                            <span>
+                                <?php echo $r['name']; ?>
+                            </span>
+                        </div>
+                    </div>
+                    <?php endwhile; ?>
+                    <?php endif; ?>
                     <?php if ($result->num_rows > 0): ?>
                     <ul>
                         <?php while ($row = $result->fetch_assoc()): ?>
@@ -63,17 +64,16 @@ $lecturerResult = $con->query($lectSql);
                                 <span>
                                     <?php echo $row['courseName']; ?>
                                 </span>
-                                <small><?php echo 'number of users who evaluated him/her per course: ' .
-                                    $row['numberOfUser']; ?></small>
+                                <small>
+                                    <?php echo 'total marks: ' .
+                                        $row['totalMarks']; ?>
+                                </small>
                             </div>
                             <div class="action d-flex justify-content-center align-items-center">
-                                <a href="/total-marks-per-course?lecturer=<?php echo $row[
-                                    'lecturerId'
-                                ]; ?>&course=<?php echo $row['courseId']; ?>">
-                                    <button type="button" style="border: 1px solid #ddd; font-size: 15px; padding: 5px; font-weight: bold; background: black; color: white; border-radius: 30px;">
-                                        <small>percentages</small>
-                                    </button>
-                                </a>
+                            <span style="font-size: 20px; font-weight: bold">
+                                        <?php echo $row['totalMarks'] / 100 .
+                                            '%'; ?>
+                                    </span>
                             </div>
                         </li>
                         <?php endwhile; ?>
