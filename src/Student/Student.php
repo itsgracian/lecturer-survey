@@ -1,3 +1,19 @@
+<?php
+session_start();
+
+include 'src/Auth/IsStudent.php';
+
+include 'src/Config/Database.php';
+
+$error = $_SESSION['fLError'];
+
+$success = $_SESSION['fLSucess'];
+
+$sql = 'SELECT * FROM lecturer ORDER BY createdAt DESC';
+
+$result = $con->query($sql);
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -17,48 +33,27 @@
         <div class="appContainer">
             <div class="studentDashboard">
                 <span style="font-size: 25px; font-weight: bold;">Start your evaluation</span>
+                <?php if ($result->num_rows > 0): ?>
                 <div class="candidate">
+                <?php while ($row = $result->fetch_assoc()): ?>
+                    <a href="<?php echo '/vote?lecturer=' . $row['id']; ?>">
                     <div class="item d-flex">
                         <div class="image">
-                            <img src="https://image.shutterstock.com/image-photo/washington-dc-june-12-2019-600w-1424043059.jpg"
+                            <img src="<?php echo 'src/Upload/' .
+                                $row['photo']; ?>"
                                 alt="">
                         </div>
                         <div class="detail d-flex flex-column justify-content-center">
-                            <h5 class="font-weight-bold">Donald Trump</h5>
-                            <span>Business Management</span>
+                            <h5 class="font-weight-bold"><?php echo $row[
+                                'name'
+                            ]; ?></h5>
+                         
                         </div>
                     </div>
-                    <div class="item d-flex">
-                        <div class="image">
-                            <img src="https://image.shutterstock.com/image-photo/washington-dc-june-12-2019-600w-1424043059.jpg"
-                                alt="">
-                        </div>
-                        <div class="detail d-flex flex-column justify-content-center">
-                            <h5 class="font-weight-bold">Donald Trump</h5>
-                            <span>Business Management</span>
-                        </div>
-                    </div>
-                    <div class="item d-flex">
-                        <div class="image">
-                            <img src="https://image.shutterstock.com/image-photo/washington-dc-june-12-2019-600w-1424043059.jpg"
-                                alt="">
-                        </div>
-                        <div class="detail d-flex flex-column justify-content-center">
-                            <h5 class="font-weight-bold">Donald Trump</h5>
-                            <span>Business Management</span>
-                        </div>
-                    </div>
-                    <div class="item d-flex">
-                        <div class="image">
-                            <img src="https://image.shutterstock.com/image-photo/washington-dc-june-12-2019-600w-1424043059.jpg"
-                                alt="">
-                        </div>
-                        <div class="detail d-flex flex-column justify-content-center">
-                            <h5 class="font-weight-bold">Donald Trump</h5>
-                            <span>Business Management</span>
-                        </div>
-                    </div>
+                    </a>
+                    <?php endwhile; ?>
                 </div>
+                <?php endif; ?>
             </div>
         </div>
     </div>

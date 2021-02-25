@@ -1,3 +1,5 @@
+<?php
+include 'src/Auth/IsAdmin.php'; ?>
 <div class="adminTab">
     <ul>
         <li>
@@ -16,6 +18,12 @@
             <a href="/admin-student">
                 <span class="ion-ios-people-outline"></span>
                 <span>Students</span>
+            </a>
+        </li>
+        <li>
+            <a href="/admin-voting">
+                <span class="ion-ios-analytics-outline" aria-hidden="true"></span>
+                <span>Voting</span>
             </a>
         </li>
     </ul>

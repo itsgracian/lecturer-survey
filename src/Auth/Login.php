@@ -25,7 +25,7 @@ if (isset($_POST['submit'])) {
 
         header("Location: $URI");
     } else {
-        $checkReg = "SELECT * FROM `user` WHERE reg_number='$regNumber'";
+        $checkReg = "SELECT * FROM `users` WHERE regNumber='$regNumber'";
 
         $result = $con->query($checkReg);
 

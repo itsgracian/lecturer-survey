@@ -10,10 +10,8 @@ if (isset($_SESSION[$loggedIn])) {
 
     if ($r->num_rows !== 0) {
         while ($row = $r->fetch_assoc()) {
-            if ($row['userType'] === $role[1]) {
+            if ($row['userType'] !== $role[0]) {
                 header('Location: /admin');
-            } else {
-                header('Location: /student');
             }
         }
     }
