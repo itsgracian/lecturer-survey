@@ -20,5 +20,11 @@ include 'src/Auth/IsAdmin.php'; ?>
                 <span>Students</span>
             </a>
         </li>
+        <li>
+            <a href="/admin-voting">
+                <span class="ion-ios-analytics-outline" aria-hidden="true"></span>
+                <span>Voting</span>
+            </a>
+        </li>
     </ul>
 </div>

@@ -50,9 +50,18 @@ switch ($request) {
         break;
 
     case parse_url($request, PHP_URL_PATH) === '/vote' &&
-    parse_url($request, PHP_URL_QUERY):
-    require __DIR__ . '/src/Student/Vote.php';
-    break;
+        parse_url($request, PHP_URL_QUERY):
+        require __DIR__ . '/src/Student/Vote.php';
+        break;
+
+    case '/admin-voting':
+        require __DIR__ . '/src/Admin/Voting/Voting.php';
+        break;
+
+    case parse_url($request, PHP_URL_PATH) === '/voted-lecturer' &&
+        parse_url($request, PHP_URL_QUERY):
+        require __DIR__ . '/src/Admin/Voting/Course.php';
+        break;
 
     default:
         http_response_code(404);

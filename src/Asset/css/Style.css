@@ -66,3 +66,29 @@ body {
   width: 1000px;
   margin: auto;
 }
+.userInformation {
+  position: relative;
+  margin-bottom: 20px;
+}
+
+.userInformation .avatar {
+  width: 120px;
+  height: 120px;
+  position: relative;
+}
+
+.userInformation .avatar img {
+  width: 100%;
+  height: 100%;
+  border-radius: 100%;
+}
+
+.userInformation .detail {
+  margin-left: 30px;
+}
+
+.userInformation .detail span {
+  font-weight: bold;
+  font-size: 20px;
+  text-transform: capitalize;
+}
