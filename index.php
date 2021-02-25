@@ -4,6 +4,7 @@ $request = $_SERVER['REQUEST_URI'];
 switch ($request) {
     case '/':
     case '':
+    case '/login':
         require __DIR__ . '/src/Auth/Login.php';
         break;
 

@@ -1,5 +1,8 @@
 <?php
-session_start(); ?>
+session_start();
+
+include 'src/Auth/IsUnauthorized.php';
+?>
 <div class="header">
     <div class="container">
         <div class="row">
